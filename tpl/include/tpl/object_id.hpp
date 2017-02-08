@@ -42,14 +42,14 @@ namespace tpl {
 		inline static object_id const& get_object_id();
 	};
 
-	class objects_id_repository
+	class TPL_API objects_id_repository
 	{
 	public:
-		TPL_API static objects_id_repository& instance();
+		static objects_id_repository& instance();
 
-		TPL_API object_id register_type(object_id const& parent, std::string const& name);
+		object_id register_type(object_id const& parent, std::string const& name);
 
-		static TPL_API object_id const& root_object_id();
+		static object_id const& root_object_id();
 
 		template<class t_object>
 		object_id const& register_type(std::string const& name)

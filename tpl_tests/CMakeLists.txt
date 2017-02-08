@@ -8,17 +8,22 @@ elseif (GCC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wa,-mbig-obj")
 endif ()
 
+set(AdditionalLibraries tpl)
 ##############################  Boost  #################################
-find_package(Boost REQUIRED COMPONENTS system log log_setup filesystem locale)
+find_package(Boost REQUIRED COMPONENTS system log filesystem locale)
 if (NOT DEFINED Boost_FOUND)
     message(FATAL_ERROR "BOOST_ROOT not set")
 endif ()
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBOOST_ALL_DYN_LINK -DBOOST_LOG_DYN_LINK")
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})
-set(AdditionalLibraries ${AdditionalLibraries} ${Boost_LIBRARIES} ws2_32)
-##############################  Gtest(taken from googletest readme)  #################################
-
+set(AdditionalLibraries ${AdditionalLibraries} ${Boost_LIBRARIES})
+if(WIN32)
+    set(AdditionalLibraries ${AdditionalLibraries} ws2_32)
+endif(WIN32)
+##############################  Gtest  #################################
+include_directories("${gtest_SOURCE_DIR}/include")
+set(AdditionalLibraries ${AdditionalLibraries} gtest)
 ########################################################################
 
 include_directories(${PROJECT_SOURCE_DIR})
@@ -39,4 +44,4 @@ set(SOURCE_FILES
         )
 
 add_executable(tpl_tests ${SOURCE_FILES} ${TEST_FILES})
-target_link_libraries(tpl_tests tpl ${AdditionalLibraries})
+target_link_libraries(tpl_tests ${AdditionalLibraries})

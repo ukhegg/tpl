@@ -36,6 +36,7 @@ set(SOURCE_FILES
         include/tpl/utils/ip_range_set.hpp
         include/tpl/utils/mac_address.hpp
         include/tpl/utils/transport_conversation_id.hpp
+        src/object_id.cpp
         src/utils/data_size.cpp
         src/utils/ip_address_range.cpp
         src/utils/ip_direction.cpp
