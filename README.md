@@ -18,6 +18,7 @@ To simplify implementing packets layout,field_descriptor<t_field_type, t_previou
 * raw byte fields
 * enum fields
 * integer fields
+
 Usage(taken from ipv6 packet):
 ```cpp
 struct fields {
