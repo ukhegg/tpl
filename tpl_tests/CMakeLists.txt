@@ -35,12 +35,26 @@ source_group("TestFiles" FILES ${TEST_FILES})
 
 set(SOURCE_FILES
         main.cpp
+        test_helper.cpp
+        test_helper.hpp
+        tpl/formats/pcap_file_test_class.cpp
         tpl/object_id_tests.cpp
+        tpl/packets/data_link/ethernet_packet_tests.cpp
+        tpl/packets/transport/tcp_packet_test_class.cpp
+        tpl/packets/transport/transport_type_tests.cpp
+        tpl/packets/transport/udp_packet_test_class.cpp
+        tpl/packets/field_descryptor_test_class.cpp
+        tpl/packets/gre_packet_test_class.cpp
+        tpl/packets/ip_packet_test_class.cpp
+        tpl/packets/packet_id_tests.cpp
+        tpl/packets/packet_tests.cpp
         tpl/utils/d_array_test_class.cpp
         tpl/utils/data_size_test_class.cpp
+        tpl/utils/field_descriptor_tests.cpp
         tpl/utils/ip_address_range_test_class.cpp
         tpl/utils/ip_direction_tests.cpp
         tpl/utils/ip_ranges_set_test_class.cpp
+        tpl/utils/packet_metainfo_test_class.cpp
         )
 
 add_executable(tpl_tests ${SOURCE_FILES} ${TEST_FILES})
