@@ -11,7 +11,7 @@ Main goal of this library is to simplify common problems while processing networ
   * write to disk
 - do this with minimal memory coping
 
-To minimize memory coping i use d_array.The name comes from dlang arrays,where you can take subsequences without coping memory.I took boost shared_array and adopted it to be able to track its size and yake prefix,suffix,middle. 
+To minimize memory coping i use d_array.The name comes from dlang arrays,where you can take subsequences without coping memory.I took boost shared_array and adopted it to be able to track its size and take prefix,suffix,middle. 
 Network packet has header,possibly has a payload. Each packet holds its bytes and a pointer to layout. Layout incapsulates the logic to get various packet's fields,basically header and payload.Also it holds packet id,so we can get packet type identifier given only reference to packet base class.
 
 To simplify implementing packets layout,field_descriptor<t_field_type, t_previous_field> class is used. Based on it's template parameters, it defines(possibly) field's __size__ and __position__ enum values and generates getters and setters. __Position__ enum value is defined if previous field is __void__ or has __position__ and __size__ defined. __Size__ enum value is defined for integer,enum and byte fields with fixed size.  Currently fields types:
